@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  post: one
+  description: MyText
+  inappropiate: 1
+  hide: false
+
+two:
+  user: two
+  post: two
+  description: MyText
+  inappropiate: 1
+  hide: false

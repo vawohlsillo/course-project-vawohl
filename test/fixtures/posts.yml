@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  blacklist: one
+  dumpster: one
+  title: MyString
+  description: MyText
+  like: 1
+  unlike: 1
+  solve_status: false
+  hide: false
+  inaproppiate: 1
+
+two:
+  user: two
+  blacklist: two
+  dumpster: two
+  title: MyString
+  description: MyText
+  like: 1
+  unlike: 1
+  solve_status: false
+  hide: false
+  inaproppiate: 1
