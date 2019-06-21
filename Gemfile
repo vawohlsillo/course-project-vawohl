@@ -5,6 +5,10 @@ ruby '2.5.1'
 
 # Devise
 gem 'devise'
+# Google OAuth 2
+gem 'omniauth-google-oauth2', '~> 0.6.1'
+gem 'omniauth', '~> 1.9'
+gem 'jwt', '~> 2.2', '>= 2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
