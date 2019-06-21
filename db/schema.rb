@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_185635) do
+ActiveRecord::Schema.define(version: 2019_06_21_193406) do
 
   create_table "blacklists", force: :cascade do |t|
     t.integer "user_id"
@@ -77,11 +77,16 @@ ActiveRecord::Schema.define(version: 2019_06_21_185635) do
     t.string "sex"
     t.boolean "suspended"
     t.string "role"
-    t.string "email"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["blacklist_id"], name: "index_users_on_blacklist_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

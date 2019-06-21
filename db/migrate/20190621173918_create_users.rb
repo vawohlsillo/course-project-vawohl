@@ -7,8 +7,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :sex
       t.boolean :suspended
       t.string :role
-      t.string :email
-      t.string :password
       t.timestamps
     end
   end
