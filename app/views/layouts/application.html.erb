@@ -22,6 +22,9 @@
   		font-size: 20px;
   		background-color: grey;
   	}
+    .top-margin{
+      margin-top: 30px;
+    }
   </style>
   <body style="background-color: teal">
   	<div class="container">
@@ -71,8 +74,12 @@
   		<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
     <%= yield %>
-    <center>
-        <button id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Policy and Terms of Conditions', policy_index_path %></button>
-    </center>
+    <% if request.url != 'localhost:3000/policy/index' %>
+      <center>
+        <div class="top-margin">
+          <button id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Policy and Terms of Conditions', policy_index_path %></button>
+        </div>
+      </center>
+    <% end %>
   </body>
 </html>
