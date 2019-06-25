@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'platform/index'
   get 'policy/index'
-  get 'users/index'
+  get 'users/index', as: "profile"
   get 'users/show'
   get 'users/edit'
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }

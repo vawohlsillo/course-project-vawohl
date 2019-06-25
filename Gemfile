@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+#gem 'carrierwave'
 # Devise
 gem 'devise'
 # Google OAuth 2
@@ -24,6 +25,7 @@ gem 'mini_racer'
 
 #Bootstrap
 gem 'bootstrap', '~> 4.3.1'
+gem 'jquery', '~> 0.0.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 

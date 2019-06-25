@@ -22,7 +22,7 @@ Devise.setup do |config|
   require 'omniauth-google-oauth2'
   # Google OAuth2
   config.mailer_sender = 'mailer@example.com'
-  config.omniauth :google_oauth2, '59529534927-ltp6m5v25ojslu5dvtrfq26tiqkhu60l.apps.googleusercontent.com', '2onaiEpxOp48LyFClJStMHx5', :skip_jwt => true
+  config.omniauth :google_oauth2, "59529534927-ltp6m5v25ojslu5dvtrfq26tiqkhu60l.apps.googleusercontent.com", "2onaiEpxOp48LyFClJStMHx5", :skip_jwt => true
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -33,7 +33,6 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
