@@ -1,2 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <% if user_signed_in? %>
+    <%=  render :template =>'platform/index' %>
+  <% else %>
+    <div class="jumbotron">
+      <h1>Welcome to Filch's Corner™</h1>
+      <p>The website where you can help making the world a better place. Complaint of any traffic, social, environmental, safety or any type of problems that happen in your neightborhood or city, share it with others users of the Filch Universe and be part of the people's revolution that the world is needing for the future. </p>
+      <center><%= image_tag('filch.png', size: '250x350') %></center>
+    </div>    
+  <% end %>
