@@ -1,19 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CourseProjectVawohl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="css/bootstrap.min.css" rel="styesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <style>
+  	.filch-title{
+  		font-family: "Times New Roman", Times, serif;
+  		font-size: 70px;
+  		color: black;
+  		font-weight: bold;
+  		}
+  	.policy{
+  		color: black;
+  		font-size: 20px;
+  		background-color: grey;
+  	}
+  </style>
+  <body style="background-color: teal">
+  	<div class="container">
+  		<div class="jumbotron", style="background-color: #cabea9">
+  			<div class="page-header">
+  				<div class="row">
+	                <div class="col">
+	                    	<%= image_tag('filch.png', size: '70x90') %>         
+	                </div>
+	                <div class="col">
+	                	<center> <h1 class="filch-title" >FILCH</h1> </center>
+	                </div>
+	                <div class="col">
+	                	<button  id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold" >
+	                		<%= link_to('Home', :root) %></button>
+                 
+                        <% if user_signed_in? %>
+                                <button id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold">
+				               <%= link_to "Profile", profile_index_path, class: "button is-info" %> 
+		                        </button>
+                                <button  id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%=link_to 'Log out', destroy_user_session_path, method: :delete %></button>
+                        <% else %> 
+                            <button id="Sign in" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Sign In', new_user_registration_path %></button> 
+                            <button id="Log in" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Log In', new_user_session_path %></button>
+                        <% end %>
+	                </div>
 
-  <body>
+
+	            </div>
+  			</div>
+  			
+  		</div>
+  	</div>
 
 
 
 
+  	<!‐‐ Librería jQuery requerida por los plugins de JavaScript ‐‐>
+  	<script src="http://code.jquery.com/jquery.js"></script>
+  	<!‐‐ Todos los plugins JavaScript de Bootstrap ‐‐>
+	<script src="js/bootstrap.min.js"></script>
 
   	<% if notice %>
   		<p class="alert alert-success"><%= notice %></p>
@@ -22,5 +71,8 @@
   		<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
     <%= yield %>
+    <center>
+        <button id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Policy and Terms of Conditions', policy_index_path %></button>
+    </center>
   </body>
 </html>
