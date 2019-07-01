@@ -48,7 +48,7 @@
   </style>
   <body style="background-color: peru">
     <header>
-    	<div class="container" style="height: 230px" >
+    	<div class="container" style="height: 200px" >
     		<div class="jumbotron" style="background-color: #cabea9; padding-top: 0px; ">
     			<div class="page-header">
     				<div class="row">
@@ -71,41 +71,40 @@
   	                </div>
 
   	                <div class="col">
-  	                	<button  id="b1" type="submit" class="btn btn-primary btn-lg" role="button" style="background-color: black; font-weight: bold" > <a>
-  	                		<%= link_to('Home', :root) %> </a> </button>
-                   
-                          <% if user_signed_in? %>
-                              <button id="b1" class="dropdown btn-lg" style="background-color: black; font-weight: bold">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                  Menu <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                  <a> <%= link_to "Profile", profile_path, class: "button is-info" %> </a>
-                                  </br>
-                                  <a> <%=link_to 'Log out', destroy_user_session_path, method: :delete %> </a>
-                                </ul>
-                              </button>
-                          <% else %>
-                            <button id="b1" class="dropdown btn-primary btn-lg" style="background-color: black; font-weight: bold">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                  Join Us <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                  <a>
-                                    <%=link_to 'Log In', new_user_session_path, class: "button is-info" %>
+  	                	<div class="row float-right">
+                        <button type="button" class="btn btn-lg" style="background-color: black; font-weight: bold; display: inline-block; margin-right: 3px;" > 
+    	                		<%= link_to('Home', :root) %> </button>
+                     
+                            <% if user_signed_in? %>
+                                <button type="button" class="btn btn-lg" style="background-color: black; font-weight: bold; display: inline-block; margin-right: 3px;">
+                                  <% if current_user.image.attached? %>
+                                    <%= image_tag(current_user.image, size: '40x30') %>
+                                    <%= link_to "Profile", profile_path, class: "button is-info" %>
+                                  <% else %>
+                                    <%= link_to "Profile", profile_path, class: "button is-info" %>
+                                  <% end %>
+                                </button>
+                                <button type="button" class="btn btn-lg" style="background-color: black; font-weight: bold; display: inline-block;">
+                                  <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+                                </button>
+                                  
+                                  
+
+                            <% else %>
+                              <div class="dropdown show">
+                                  <a class="btn btn-link dropdown-toggle btn-lg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: #687bc0; font-weight: bold; display: inline-block;">
+                                    Join Us
                                   </a>
-                                  </br>
-                                  <a> <%= link_to "Register", new_user_registration_path, class: "button is-info" %>
-                                  </a>                              
-                                </ul>
-                              </button>
-                          <% end %>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" style="font-size: 20px;"> <%= link_to "Log In", new_user_session_path, class: "button is-info" %> </a>
+                                    <a class="dropdown-item" style="font-size: 20px;"> <%= link_to "Register", new_user_registration_path, class: "button is-info" %> </a>
+                                  </div>
+                              </div>
+                            <% end %>
+                      </div>
   	                </div>
-
-
   	            </div>
     			</div>
-    			
     		</div>
     	</div>
     </header>
