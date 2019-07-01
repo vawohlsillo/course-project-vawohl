@@ -1,2 +1,10 @@
-<h1>Platform#index</h1>
-<p>Find me in app/views/platform/index.html.erb</p>
+<div class="container">
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col">
+				<center> <h1> What's new on your life? </h1> </br> </center>
+				<%= render :partial => 'posts/form', :locals => { :post => @post } %>
+			</div>	
+		</div>
+	</div>
+</div>
