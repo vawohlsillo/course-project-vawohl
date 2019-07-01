@@ -6,11 +6,26 @@
     <title>Filch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="css/bootstrap.min.css" rel="styesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css/"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css/"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-grid.css/"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-grid.min.css/"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.css/"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.min.css/"/>
+    <link rel="shortcut icon" href="images/filch_icon.png" /> 
+    <!‐‐ Librería jQuery requerida por los plugins de JavaScript ‐‐>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!‐‐ Todos los plugins JavaScript de Bootstrap ‐‐>
+    <script src="js/bootstrap.js"> </script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <style>
+    .website{
+      margin-left: 70px;
+      margin-right: 20px;
+    }
   	.filch-title{
   		font-family: "Times New Roman", Times, serif;
   		font-size: 70px;
@@ -25,47 +40,73 @@
     .top-margin{
       margin-top: 20px;
     }
+    .container{
+      background-color: #cabea9;
+    }
   </style>
-  <body style="background-color: teal">
-  	<div class="container">
-  		<div class="jumbotron", style="background-color: #cabea9">
-  			<div class="page-header">
-  				<div class="row">
-	                <div class="col">
-	                    	<%= image_tag('filch.png', size: '70x90') %>         
-	                </div>
-	                <div class="col">
-	                	<center> <h1 class="filch-title" >FILCH</h1> </center>
-	                </div>
-	                <div class="col">
-	                	<button  id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold" >
-	                		<%= link_to('Home', :root) %></button>
-                 
+  <body style="background-color: peru">
+    <header>
+    	<div class="container" >
+    		<div class="jumbotron" style="background-color: #cabea9;">
+    			<div class="page-header">
+    				<div class="row">
+  	                <div class="col">
+  	                    	<%= image_tag('filch.png', size: '70x90') %>       
+  	                </div>
+
+  	                <div class="col">
+  	                	<center> <h1 class="filch-title" >FILCH</h1> 
+                        </br>
                         <% if user_signed_in? %>
-                                <button id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold">
-				               <%= link_to "Profile", profile_path, class: "button is-info" %> 
-		                        </button>
-                                <button  id="b1" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%=link_to 'Log out', destroy_user_session_path, method: :delete %></button>
-                        <% else %> 
-                            <button id="Sign in" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Sign In', new_user_registration_path %></button> 
-                            <button id="Log in" type="submit" class="btn btn-default btn-lg" role="button" style="background-color: black; font-weight: bold"> <%= link_to 'Log In', new_user_session_path %></button>
+                            <%= form_tag(users_show_path method: :get) do %>
+                              <%= text_field_tag :name, params[:name] %>
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <% end %>
                         <% end %>
-	                </div>
+                      </center>
+  	                </div>
+
+  	                <div class="col">
+  	                	<button  id="b1" type="submit" class="btn btn-primary btn-lg" role="button" style="background-color: black; font-weight: bold" > <a>
+  	                		<%= link_to('Home', :root) %> </a> </button>
+                   
+                          <% if user_signed_in? %>
+                              <button id="b1" class="dropdown btn-lg" style="background-color: black; font-weight: bold">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                  Menu <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  <a> <%= link_to "Profile", profile_path, class: "button is-info" %> </a>
+                                  </br>
+                                  <a> <%=link_to 'Log out', destroy_user_session_path, method: :delete %> </a>
+                                </ul>
+                              </button>
+                          <% else %>
+                            <button id="b1" class="dropdown btn-primary btn-lg" style="background-color: black; font-weight: bold">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  Join Us <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  <a>
+                                    <%=link_to 'Log In', new_user_session_path, class: "button is-info" %>
+                                  </a>
+                                  </br>
+                                  <a> <%= link_to "Register", new_user_registration_path, class: "button is-info" %>
+                                  </a>                              
+                                </ul>
+                              </button>
+                          <% end %>
+  	                </div>
 
 
-	            </div>
-  			</div>
-  			
-  		</div>
-  	</div>
+  	            </div>
+    			</div>
+    			
+    		</div>
+    	</div>
+    </header>
 
 
-
-
-  	<!‐‐ Librería jQuery requerida por los plugins de JavaScript ‐‐>
-  	<script src="http://code.jquery.com/jquery.js"></script>
-  	<!‐‐ Todos los plugins JavaScript de Bootstrap ‐‐>
-	<script src="js/bootstrap.min.js"></script>
 
   	<% if notice %>
   		<p class="alert alert-success"><%= notice %></p>

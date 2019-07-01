@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 	def account_update_params
 		# AÑADIR IMAGE MÀS ADELANTE
-	params.require(:user).permit(:name, :biography, :sex, :email, :password, :password_confirmation, :current_password)
+	params.require(:user).permit(:image, :name, :biography, :sex, :email, :password, :password_confirmation, :current_password)
 	end
 
 	

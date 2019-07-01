@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	#before_action :authenticate_user!
   	def index
+		@post = Post.new
   	end
 	
 	def user_params

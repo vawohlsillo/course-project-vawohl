@@ -1,2 +1,32 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container website" >
+	</br>
+	<div class="row">
+		<div class="col-sm-4">
+			<% if current_user.image.attached? %>
+				<%= image_tag(current_user.image, style="width: 100%; height: auto;" )%>
+			<% else %>
+				<%= image_tag('nophoto.png') %>
+			<% end %>
+		</div>
+
+		<div class="col-sm-4">
+			<h1> <%= current_user.name %> </h1> 		
+			<p style="font-size: 20px;"> <%= current_user.sex %> </p>
+			<p style="font-size: 15px;"> Missing location for now </p>
+			<p style="font-size: 15px;"> <%= current_user.biography %> </p>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="float-right">
+				<button id="b1" type="button" class="btn btn- btn-sm" style="background-color: black ; border: white"> 
+					<%= link_to 'Edit your profile', edit_user_registration_path %>
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row justify-content-md-center">
+		<%= render :partial => 'posts/form', :locals => { :post => @post } %>
+	</div>
+</div>
+	

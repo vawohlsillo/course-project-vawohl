@@ -7,6 +7,7 @@ class User < ApplicationRecord
 	has_many :comments
 	has_one :blacklist
 	validates :name, presence: true
+	has_one_attached :image
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
