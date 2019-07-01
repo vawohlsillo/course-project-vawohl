@@ -1,4 +1,10 @@
-<div class="container website" >
+<style>
+	.form{
+		width: 500px;
+	}
+
+</style>
+<div class="container website" style="padding-bottom: 30px;" >
 	</br>
 	<div class="row">
 		<div class="col-sm-4">
@@ -18,14 +24,16 @@
 
 		<div class="col-sm-4">
 			<div class="float-right">
-				<button id="b1" type="button" class="btn btn- btn-sm" style="background-color: black ; border: white"> 
+				<button id="b1" type="button" class="btn btn- btn-sm" style="background-color: black ; border: white; font-weight: bold ">
+					<a> 
 					<%= link_to 'Edit your profile', edit_user_registration_path %>
+					</a>
 				</button>
 			</div>
 		</div>
 	</div>
 	
-	<div class="row justify-content-md-center">
+	<div class="row justify-content-md-center" style="margin-top: 15px;">
 		<%= render :partial => 'posts/form', :locals => { :post => @post } %>
 	</div>
 </div>

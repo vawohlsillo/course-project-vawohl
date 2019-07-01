@@ -8,12 +8,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap-grid.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap-grid.min.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.min.css/"/>
+
     <link rel="shortcut icon" href="images/filch_icon.png" /> 
     <!‐‐ Librería jQuery requerida por los plugins de JavaScript ‐‐>
     <script src="http://code.jquery.com/jquery.js"></script>
@@ -46,8 +48,8 @@
   </style>
   <body style="background-color: peru">
     <header>
-    	<div class="container" >
-    		<div class="jumbotron" style="background-color: #cabea9;">
+    	<div class="container" style="height: 230px" >
+    		<div class="jumbotron" style="background-color: #cabea9; padding-top: 0px; ">
     			<div class="page-header">
     				<div class="row">
   	                <div class="col">
@@ -60,7 +62,9 @@
                         <% if user_signed_in? %>
                             <%= form_tag(users_show_path method: :get) do %>
                               <%= text_field_tag :name, params[:name] %>
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit">
+                              <%= image_tag('search.png', size: '40x30')%> 
+                            </button>
                             <% end %>
                         <% end %>
                       </center>

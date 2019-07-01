@@ -1,34 +1,40 @@
-<center>
-	<%= form_with(model: post, local: true) do |form| %>
-	  <% if post.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-	      <ul>
-	      <% post.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-	      <% end %>
-	      </ul>
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+	<li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <center>
+	  <div class="panel panel-primary">
+	    <div class="panel-heading">
+	      <div class="field">
+		<%= form.label :title %>
+		<%= form.text_field :title %>
+	      </div>
 	    </div>
-	  <% end %>
-
-	  <div class="field">
-	    <%= form.label :title %>
-	    <%= form.text_field :title %>
+	    <div class="panel-body">
+	      <div class="field">
+		<%= form.label :files %>
+		<%= form.file_field :files, multiple: true %>
+	      </div>
+	    </div>
+	    <div class="panel-footer">
+	      <div class="field">
+		<%= form.label :description %>
+		<%= form.text_area :description %>
+	      </div>
+	    </div>
 	  </div>
-
-	  <div class="field">
-	    <%= form.label :files %>
-	    <%= form.file_field :files, multiple: true %>
-	  </div>
-
-	  <div class="field">
-	    <%= form.label :description %>
-	    <%= form.text_area :description %>
-	  </div>
-
 	  <div class="actions">
 	    <%= form.submit %>
 	  </div>
-	<% end %>
-</center>
+  </center>
+  
+<% end %>
+
