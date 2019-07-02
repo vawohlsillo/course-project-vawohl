@@ -9,8 +9,11 @@
                   <a href="/users/index"> <%= image_tag(current_user.image, size:'35x50') %> </a>
                   <a style="font-size: 30px;"> <%= link_to current_user.name, profile_path %> </a>
               <% else %>
-                  <a href="/users/show"> <%= image_tag(post.user.image, size:'45x55') %> </a>
-                  <a style = "font-size: 30px;"> <%= link_to post.user.name, users_show_path(post.user.name) %> </a>  
+                  <a > <%= link_to users_show_path(@post.user_id) do %>
+                  			<%= image_tag(@post.user.image, size: '55x40') %>  
+              	  		<% end %>
+              	  </a>  
+                  <a style = "font-size: 30px;"> <%= link_to @post.user.name, users_show_path(@post.user_id) %> </a>  
               <% end %>
             </div>
             <div class="panel-body">

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :require_user, only: [:index, :show, :edit, :update]	
+	before_action :require_user, only: [:index, :show, :edit, :update]	
 	#before_action :set_user, except: [:create]
 	before_action :authenticate_user!, except: [:index, :show]
   	def index
