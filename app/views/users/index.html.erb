@@ -8,7 +8,7 @@
 	</br>
 	<div class="row">
 		<div class="col-sm-4">
-			<%= image_tag(current_user.image, style="width: 100%; height: auto;" )%>
+			<%= image_tag(current_user.image, style:"width: 250px; height: auto;" )%>
 		</div>
 
 		<div class="col-sm-4">
@@ -20,10 +20,8 @@
 
 		<div class="col-sm-4">
 			<div class="float-right">
-				<button id="b1" type="button" class="btn btn- btn-sm" style="background-color: black ; border: white; font-weight: bold ">
-					<a> 
+				<button type="button" class="btn btn- btn-sm" style="background-color: black ; border: white; font-weight: bold ">
 					<%= link_to 'Edit your profile', edit_user_registration_path %>
-					</a>
 				</button>
 			</div>
 		</div>
@@ -31,6 +29,7 @@
 	<center> <h1> Post something ... </h1> </br> </center>
 	<div class="row justify-content-md-center" style="margin-top: 5px;">
 		<%= render :partial => 'posts/form', :locals => { :post => @post } %>
+		<%= render :partial => "posts/show" %>
 	</div>
 </div>
 	

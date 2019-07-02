@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 	#before_action :authenticate_user!, except: [:index, :show]
   	def index
 		@post = Post.new
+		@comment = Comment.new
+		@posts = current_user.posts.order("created_at DESC")
+  	end
+
+	def show
+		@user = User.find(params[:user_id])
+		@post = Post.new
+		@comment = Comment.new
+		@posts = @user.posts.order("created_at DESC")	
   	end
 	
 	def user_params
@@ -37,10 +46,6 @@ class UsersController < ApplicationController
       			end
 		end
 	end
-
-  	def show
-		#@user = User.find(params[:id])	
-  	end
 
   	def edit
   	end

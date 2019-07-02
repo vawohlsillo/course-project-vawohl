@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<style>
+	.form{
+		width: 500px;
+	}
+
+</style>
+<div class="container website" style="padding-bottom: 30px;" >
+	</br>
+	<div class="row">
+		<div class="col-sm-4">
+			<%= image_tag(@user.image, style:"width: 250px; height: auto;" )%>
+		</div>
+
+		<div class="col-sm-4">
+			<h1> <%= @user.name %> </h1> 		
+			<p style="font-size: 20px;"> <%= @user.sex %> </p>
+			<p style="font-size: 15px;"> Missing location for now </p>
+			<p style="font-size: 15px;"> <%= @user.biography %> </p>
+		</div>
+
+		<div class="col-sm-4">
+		</div>
+	</div>
+	<center> <h1> Post something ... </h1> </br> </center>
+	<div class="row justify-content-md-center" style="margin-top: 5px;">
+		<%= render :partial => 'posts/form', :locals => { :post => @post } %>
+		<%= render :partial => "posts/show" %>
+	</div>
+</div>

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'policy/index'
   get 'users/index', as: "profile"
   get 'users/show'
-  get 'users/edit'
   get 'posts/index'
   resources :posts
   resources :comments

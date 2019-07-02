@@ -8,9 +8,9 @@ class User < ApplicationRecord
 	has_one :blacklist
 	validates :name, presence: true
 	has_one_attached :image
-	after_commit :image_is_attached, on: [:create]
+	after_create :image_is_attached
 	def image_is_attached
-		if !self.image.attached?
+		if !current_user.image.attached?
 			self.image.attach(io: File.open(Rails.root.join("app","assets","images","nophoto.png")), filename: 'nophoto.png', content_type: "image/png")
 		end
 	end

@@ -8,7 +8,7 @@
 	            		<a style="font-size: 25px;"> <%= link_to current_user.name, profile_path %> </a>
 	        		<% else %>
 			            <a href="/users/show"> <%= image_tag(comment.user.image, size:'20x30') %> </a>
-			            <a style = "font-size: 15px;"> <%= link_to comment.user.name, users_show_path(@post.user.name) %> </a>  
+			            <a style = "font-size: 15px;"> <%= link_to comment.user.name, users_show_path(user_id: comment.user.id) %> </a>  
 	        		<% end %>
 				</div>
 				<div class="panel-body">
