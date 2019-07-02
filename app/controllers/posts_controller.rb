@@ -31,11 +31,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(create_post_params)
+    @post.user_id = current_user.id
+    @post.inappropiate_post = InappropiatePost.new
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html { redirect_to "/", notice: 'Post was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -77,7 +78,7 @@ class PostsController < ApplicationController
 	@user = User.find(params[:id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :description, files: [] )
+    def create_post_params
+      params.require(:post).permit( :title, :description, files: [] )
     end
 end
