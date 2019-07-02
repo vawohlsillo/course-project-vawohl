@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 	#before_action :set_user, except: [:create]
 	before_action :authenticate_user!, except: [:index, :show]
   	def index
-		@post = Post.new
-		@comment = Comment.new
+		@post_new = Post.new
+		@comment_new = Comment.new
 		@posts = current_user.posts.order("created_at DESC")
   	end
 

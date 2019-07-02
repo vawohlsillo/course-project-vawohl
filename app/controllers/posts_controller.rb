@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-	@comment = Comment.new
+	@comment_new = Comment.new
   	#@user = @post.user
   end
 
