@@ -1,0 +1,36 @@
+<%= form_with(model: comment, local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <center>
+    <div class="panel panel-success" style="width: 600px; height: auto;">
+      <div class="panel-heading">
+        <div class="float-left">
+          <%= image_tag(current_user.image, size:'25x35') %>
+        </div>
+        <center> <h4> What do you think about that? </h4></center>
+      </div>
+      <div class="panel-body">
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description, cols: 55, rows: 1 %>
+        </div>
+      </div>
+      <div class="panel-footer" style="height: 55px;">
+        <div class="float-right">
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+<% end %>

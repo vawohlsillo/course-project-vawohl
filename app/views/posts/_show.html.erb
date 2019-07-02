@@ -1,30 +1,32 @@
 <% @posts.each do |post| %>
-	<div class="panel panel-info">
-		<div class="panel-heading">
-		  <% if post.user_id == current_user.id %>
-		      <a href="/users/index"> <%= image_tag(current_user.image, size:'35x50') %> </a>
-		      <a style="font-size: 30px;"> <%= link_to current_user.name, profile_path %> </a>
-		  <% else %>
-		      <a href="/users/show"> <%= image_tag(post.user.image, size:'35x50') %> </a>
-		      <a style = "font-size: 30px;"> <%= link_to post.user.name, users_show_path(post.user.name) %> </a>  
-		  <% end %>
-		</div>
-		<div class="panel-body">
-			<h2 href="/posts/index/"> <%= post.title %> </h2></br>
-			<a> <%= post.description %> </a> </div> </br>
-			<% if post.files.attached? %>
-				<div class="row">
-					<%= (0...post.files.count).each do |file| %>
-					<a> 
-						<%= image_tag(post.files[file], style:'width: 150px; height: 100px;') %>	
-					</a>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
-		<div class="panel-footer">
+	<center>
+		<div class="panel panel-info" style = "width: 700px; height: auto;">
+			<div class="panel-heading">
+			  <% if post.user_id == current_user.id %>
+			      <a href="/users/index"> <%= image_tag(current_user.image, size:'35x50') %> </a>
+			      <a style="font-size: 30px;"> <%= link_to current_user.name, profile_path %> </a>
+			  <% else %>
+			      <a href="/users/show"> <%= image_tag(post.user.image, size:'45x55') %> </a>
+			      <a style = "font-size: 30px;"> <%= link_to post.user.name, users_show_path(post.user.name) %> </a>  
+			  <% end %>
+			</div>
+			<div class="panel-body">
+				<h2> <%= link_to post.title, posts_index_path(post_id: post.id) %> </h2></br>
+				<a> <%= post.description %> </a> </div> </br>
+				<% if post.files.attached? %>
+					<div class="row">
+						<%= (0...post.files.count).each do |file| %>
+						<a> 
+							<%= image_tag(post.files[file], style:'width: 150px; height: 100px;') %>	
+						</a>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class="panel-footer">
 
+			</div>
 		</div>
-	</div>
+	</center>
 	<%= render :partial => 'comments/form', :locals => {:comment => @comment} %>
 <% end %>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filch</title>
+    <title> Filch ™ </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +16,8 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.css/"/>
     <link type="text/css" rel="stylesheet" href="css/bootstrap-reboot.min.css/"/>
 
-    <link rel="shortcut icon" href="images/filch_icon.png" /> 
+    <link rel="shortcut icon" href="app/assets/images/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="app/assets/images/favicon.ico" type="image/x-icon" /> 
     <!‐‐ Librería jQuery requerida por los plugins de JavaScript ‐‐>
     <script src="http://code.jquery.com/jquery.js"></script>
     <!‐‐ Todos los plugins JavaScript de Bootstrap ‐‐>
@@ -53,11 +54,11 @@
     			<div class="page-header" >
     				<div class="row">
   	                <div class="col">
-  	                    	<%= image_tag('filch.png', size: '70x90') %>       
+  	                    	<%= image_tag('filch.png', size: '80x120') %>       
   	                </div>
 
   	                <div class="col">
-  	                	<center> <h1 class="filch-title" >FILCH</h1> 
+  	                	<center> <h1 class="filch-title" > FILCH ™</h1> 
                         </br>
                         <% if user_signed_in? %>
                             <%= form_tag(users_show_path method: :get) do %>
@@ -78,7 +79,7 @@
                             <% if user_signed_in? %>
                                 <button type="button" class="btn btn-lg" style="background-color: black; font-weight: bold; display: inline-block; margin-right: 3px;">
                                   <% if current_user.image.attached? %>
-                                    <%= image_tag(current_user.image, size: '40x30') %>
+                                    <%= image_tag(current_user.image, size: '30x40') %>
                                     <%= link_to "Profile", profile_path, class: "button is-info" %>
                                   <% else %>
                                     <%= link_to "Profile", profile_path, class: "button is-info" %>
@@ -87,7 +88,6 @@
                                 <button type="button" class="btn btn-lg" style="background-color: black; font-weight: bold; display: inline-block;">
                                   <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
                                 </button>
-                                  
                                   
 
                             <% else %>

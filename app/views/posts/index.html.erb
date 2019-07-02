@@ -1,14 +1,40 @@
-<% @posts.each do |post| %>
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <% if post.user == current_user %>
-        <% if current_user.image.attached? %>
-          <%= link_to(image_tag(current_user.image, size:'30x20'), current_user.name, profile_path) %>
-        <% else %>
-        <% end %>
-      <% else %>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col">
+        <center>
+          <div class="panel panel-info" style = "width: 700px; height: auto;">
+            <div class="panel-heading">
+              <% if @post.user_id == current_user.id %>
+                  <a href="/users/index"> <%= image_tag(current_user.image, size:'35x50') %> </a>
+                  <a style="font-size: 30px;"> <%= link_to current_user.name, profile_path %> </a>
+              <% else %>
+                  <a href="/users/show"> <%= image_tag(post.user.image, size:'45x55') %> </a>
+                  <a style = "font-size: 30px;"> <%= link_to post.user.name, users_show_path(post.user.name) %> </a>  
+              <% end %>
+            </div>
+            <div class="panel-body">
+              <a style="font-size: 30px; font-weight: bold;" href="/posts/index/"> <%= @post.title %> </a></br>
+              <a> <%= @post.description %> </a> </br>
+              <% if @post.files.attached? %>
+                <div class="row">
+                  <%= (0...@post.files.count).each do |file| %>
+                  <a> 
+                    <%= image_tag(post.files[file], style:'width: 150px; height: 100px;') %>  
+                  </a>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="panel-footer">
 
-      <% end %>
+            </div>
+          </div>
+      </center>
+      <%= render :partial => 'comments/form', :locals => {:comment => @comment} %>
+      <%= render :partial => 'comments/show' %>
     </div>
   </div>
-<% end %>
+</div>
+</div>
+

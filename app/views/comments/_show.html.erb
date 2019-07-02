@@ -1,0 +1,23 @@
+<center>
+	<% @comments.each do |comment| %>
+		<div class="panel panel-default" style="width: 550px; height: auto;">
+			<% if comment.post_id == @post.id %>
+				<div class="panel-heading">
+					<% if comment.user_id == current_user.id %>
+	            		<a href="/users/index"> <%= image_tag(current_user.image, size:'25x45') %> </a>
+	            		<a style="font-size: 25px;"> <%= link_to current_user.name, profile_path %> </a>
+	        		<% else %>
+			            <a href="/users/show"> <%= image_tag(comment.user.image, size:'20x30') %> </a>
+			            <a style = "font-size: 15px;"> <%= link_to comment.user.name, users_show_path(@post.user.name) %> </a>  
+	        		<% end %>
+				</div>
+				<div class="panel-body">
+					<a> <%= comment.description %> </a>
+				</div>
+				<div class="panel-footer">
+
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</center>

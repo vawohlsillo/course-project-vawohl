@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'platform/index'
   get 'policy/index'
   get 'users/index', as: "profile"
   get 'users/show'
   get 'users/edit'
+  get 'posts/index'
   resources :posts
-  resources :users
+  resources :comments
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
   # si falla omniauth añadir passthru a callbacks controller
   
