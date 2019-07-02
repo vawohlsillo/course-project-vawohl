@@ -1,17 +1,21 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [:create]
-  before_action :set_user
+  before_action :require_user, only: [:create, :update, :destroy]
   # GET /posts
   # GET /posts.json
   def index
     @post = Post.new
     @posts = Post.all
+    @user = @post.user
+    post.user.image = @user.image_string
   end
+
 
   # GET /posts/1
   # GET /posts/1.json
   def show
 	@comment = Comment.new
+  	@user = @post.user
   end
 
   # GET /posts/new
@@ -26,7 +30,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

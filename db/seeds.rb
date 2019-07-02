@@ -14,24 +14,24 @@ user1 = User.create( name: "Esteban Dido", biography: "Studying civil engineerin
 #	u.save!
 #end
 
-inappropiate_p1 = InappropiatePost.new()
-inappropiate_p1.save!
-post1 = Post.new(user: @users[1], title: 'Transportation in San Carlos it is very bad', description: 'When I came back to home from university, it is a hole mess because transantiago buses are full from its capacity so it takes one hour to get tu Los Dominicos Subway', like: 3, unlike: 1,  solve_status: 0, inappropiate_counter: 0, inappropiate_post: inappropiate_p1)
+inappropiate_p1 = InappropiatePost.create()
+#inappropiate_p1.save!
+post1 = Post.create(user: @users[1], title: 'Transportation in San Carlos it is very bad', description: 'When I came back to home from university, it is a hole mess because transantiago buses are full from its capacity so it takes one hour to get tu Los Dominicos Subway', like: 3, unlike: 1,  solve_status: 0, inappropiate_counter: 0, inappropiate_post: inappropiate_p1)
 
 @posts = [ post1 ]
 
-for po in @posts do 
-	po.save!
-end
+#for po in @posts do 
+#	po.save!
+#end
 
-inappropiate_c1 = InappropiateComment.new()
-inappropiate_c1.save!
-comment1 = Comment.new(post: @posts[0], user: @users[0], description: 'I am agree with you my friend. The system is not efficent', inappropiate_counter: 0, inappropiate_comment: inappropiate_c1)
+inappropiate_c1 = InappropiateComment.create()
+#inappropiate_c1.save!
+comment1 = Comment.create(post: @posts[0], user: @users[0], description: 'I am agree with you my friend. The system is not efficent', inappropiate_counter: 0, inappropiate_comment: inappropiate_c1)
  
 @comments = [ comment1 ]
 
-for c in @comments do 
-	c.save!
-end
+#for c in @comments do 
+#	c.save!
+#end
 
 

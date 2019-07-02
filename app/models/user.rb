@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 	has_many :posts
-	has_many :comments
+	has_many :comments, through: :posts
 	has_one :blacklist
 	validates :name, presence: true
 	has_one_attached :image
