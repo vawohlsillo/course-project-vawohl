@@ -2,29 +2,39 @@
     <div class="container" style="top-margin: 5px;">
 	<div class="jumbotron">
 		<div class="row">
-			<div class="col-md-auto">
-				
+			<div class="col-sm-auto">
+				<h2> Check the ...</h2> </br>
+				<button type="button" class="btn btn-secondary btn-lg"> Hello </button> </br>
+				<button type="button" class="btn btn-secondary btn-lg"> Hello </button> </br>
+				<h2> Advertising </h2> </br>
+					<a> <%= image_tag("coke.png", size:'160x200') %> </a> 
+					</br>
+					</br>
+					</br>
+					<a> <%= image_tag("glovo.png", size:'160x200') %> </a> </br>
+					</br>
+					</br>
+					</br>
+					<a> <%= image_tag("got.png", size:'160x200') %> </a> </br>
+					</br>
+					</br>
+					</br>
+					<a> <%= image_tag("niu.png", size:'160x200') %> </a> </br>
+
 			</div>
-			<div class="col">
+			<div class="col-lg-auto">
 				<center> <h1> What's new on your life? </h1> </br> </center>
 				<%= render :partial => 'posts/form', :locals => { :post => @post , :user => current_user } %>
 				<div class="panel-group">
 						<%= render :partial => "posts/show" %>
 				</div>
-				<div class="col-md-auto">
-
+				<div class="col-sm-auto">
+					
 			    </div>
 			</div>	
 		</div>
 	</div>
     </div>
-
-
-
-
-
-
-
 
 
   <% else %>
