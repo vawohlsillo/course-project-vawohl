@@ -1,0 +1,23 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+	  <% if post.user_id == current_user.id %>
+	    <% if current_user.image.attached? %>
+	      <a href="/users/index"> <%= image_tag(current_user.image, size:'30x20') %> </a>
+	      <a> <%= link_to current_user.name, profile_path %> </a>
+	    <% else %>
+	      <a href="/users/index"> <%= image_tag('nophoto.png', size:'30x20') %> </a>
+	      <a> <%= link_to current_user.name, profile_path %> </a>
+	    <% end %>
+	  <% else %>
+	  	<% if post.user.image.attached? %>
+	      <a href="/users/show"> <%= image_tag(post.user.image, size:'30x20') %> </a>
+	      <a> <%= link_to post.user.name, users_show_path(post.user) %> </a>
+
+	    <% else %>
+	      <a href="/users/show"> <%= image_tag('nophoto.png', size:'30x20') %> </a>
+	      <a> <%= link_to post.user.name, users_show_path(post.user) %> </a>
+	      
+	    <% end %>
+	  <% end %>
+	</div>
+</div>

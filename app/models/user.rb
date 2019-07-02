@@ -8,6 +8,12 @@ class User < ApplicationRecord
 	has_one :blacklist
 	validates :name, presence: true
 	has_one_attached :image
+	after_commit :image_is_attached, on: [:create, :update]
+	def image_is_attached
+		if !self.image.attached?
+			self.image.attach(io: File.open(Rails.root.join("app","assets","images","nophoto.png")), filename: 'nophoto.png', content_type: "image/png")
+		end
+	end
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

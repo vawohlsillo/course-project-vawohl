@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
-	#before_action :authenticate_user!
+	before_action :set_user, except: [:create]
+	before_action :authenticate_user!, except: [:index, :show]
   	def index
 		@post = Post.new
   	end
 	
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :sex)
+		
+		params.require(:user).permit(:image, :name, :email, :password, :sex)
 	end
 
 	def google_user_params
-		params.require(:user).permit(:name, :email, :password, :provider, :uid)
+		image = Rails.root + 'app/assets/images/nophoto.png/'
+		params.require(:user).permit(image, :name, :email, :password, :provider, :uid)
 	end
 	def new
-		@user = User.new
 	end
 
 	def create
@@ -38,8 +40,15 @@ class UsersController < ApplicationController
 	end
 
   	def show
+		
   	end
 
   	def edit
   	end
+	
+	private	
+	
+	def set_user
+		@user = User.find(params[:id])	
+	end
 end

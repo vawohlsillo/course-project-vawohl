@@ -10,7 +10,6 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.boolean :solve_status
       t.boolean :hide
       t.integer :inappropiate_counter
-
       t.timestamps
     end
   end
