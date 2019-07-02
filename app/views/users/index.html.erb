@@ -8,11 +8,7 @@
 	</br>
 	<div class="row">
 		<div class="col-sm-4">
-			<% if current_user.image.attached? %>
-				<%= image_tag(current_user.image, style="width: 100%; height: auto;" )%>
-			<% else %>
-				<%= image_tag('nophoto.png') %>
-			<% end %>
+			<%= image_tag(current_user.image, style="width: 100%; height: auto;" )%>
 		</div>
 
 		<div class="col-sm-4">
