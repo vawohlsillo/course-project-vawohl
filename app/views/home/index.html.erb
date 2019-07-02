@@ -2,12 +2,18 @@
     <div class="container" style="top-margin: 5px;">
 	<div class="jumbotron">
 		<div class="row">
+			<div class="col-md-auto">
+				
+			</div>
 			<div class="col">
 				<center> <h1> What's new on your life? </h1> </br> </center>
 				<%= render :partial => 'posts/form', :locals => { :post => @post , :user => current_user } %>
 				<div class="panel-group">
 						<%= render :partial => "posts/show" %>
 				</div>
+				<div class="col-md-auto">
+
+			    </div>
 			</div>	
 		</div>
 	</div>
