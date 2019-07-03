@@ -61,6 +61,6 @@
             </div>
 		</div>
 	
-	<%= render :partial => 'comments/form', :locals => {:comment => @comment_new} %>
+	<%= render 'comments/form', comment: @comment_new, :post_id: post.id %>
 	</center>
 <% end %>

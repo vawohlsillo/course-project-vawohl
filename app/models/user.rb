@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
-	has_many :posts
-	has_many :comments, through: :posts
+	has_many :posts, dependent: :destroy
+	has_many :comments, through: :posts, dependent: destroy
 	has_one :blacklist
-	has_many :likes
-	has_many :flags
+	has_many :likes, dependent: :destroy
+	has_many :flags, dependent: :destroy
 	validates :name, presence: true
 	has_one_attached :image
 	after_create :image_is_attached
