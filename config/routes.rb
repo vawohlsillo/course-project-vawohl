@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'posts/index'
   resources :posts
   resources :comments
+  resources :likes, only: [:create, :destroy]
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
   # si falla omniauth añadir passthru a callbacks controller
   

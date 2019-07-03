@@ -12,10 +12,32 @@
 		</div>
 
 		<div class="col-sm-4">
-			<h1> <%= current_user.name %> </h1> 		
-			<p style="font-size: 20px;"> <%= current_user.sex %> </p>
-			<p style="font-size: 15px;"> Missing location for now </p>
-			<p style="font-size: 15px;"> <%= current_user.biography %> </p>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">
+							<center> <h1 style="color: white;"> <%= current_user.name %> </h1> </center> 		
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">
+							<center> <p style="font-size: 20px;"> <%= current_user.sex %> </p> </center>
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">
+							<center> <p style="font-size: 15px;"> Missing location for now </p> </center>
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">
+							<center> <p style="font-size: 15px;"> <%= current_user.biography %> </p> </center>
+						</th>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 
 		<div class="col-sm-4">

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @posts = Post.all
     @user = User.find(@post.user_id)
-    @comment = Comment.new
+    @comment_new = Comment.new
     @comments = @post.comments.order("created_at DESC")
     #post.user.image = @user.image_string
   end
