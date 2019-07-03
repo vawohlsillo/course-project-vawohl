@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 	has_many :inappropiate_posts
 	has_one :blacklist
 	has_one :dumpster
-	has_many :comments
+	has_many :comments, dependent: :destroy_all
 	has_many :flags
 	has_many_attached :files
 	has_many :likes

@@ -25,34 +25,34 @@
 			</div>
 			<div class="panel-footer">
                 <div class="row" style="margin-left: 30px;">
-                  <a> <span class="glyphicon glyphicon-comment"></span> <%= @post.comments.count %> <%= link_to 'Comments', posts_index_path(post_id: @post.id) %> </a>
-                  <% like = @post.likes.where("user_id = ?", current_user.id) %>
+                  <a> <span class="glyphicon glyphicon-comment"></span> <%= post.comments.count %> <%= link_to 'Comments', posts_index_path(post_id: post.id) %> </a>
+                  <% like = post.likes.where("user_id = ?", current_user.id) %>
                   <a>
                   <% if like.empty? %>
-                    <%= button_to likes_path(like: {post_id: @post.id}), method: :post, class: "btn btn-light btn-sm" do %>
-                        <span class="glyphicon glyphicon-thumbs-up"></span> <%= @post.likes.count %>
+                    <%= button_to likes_path(like: {post_id: post.id}), method: :post, class: "btn btn-light btn-sm" do %>
+                        <span class="glyphicon glyphicon-thumbs-up"></span> <%= post.likes.count %>
                     <% end %>
                   <% else %>
                     <%= button_to like.first, method: :delete, class: "btn btn-light btn-sm" do %>
-                      <span class="glyphicon glyphicon-thumbs-down"></span> <%= @post.likes.count %>
+                      <span class="glyphicon glyphicon-thumbs-down"></span> <%= post.likes.count %>
                     <% end %>
                   <% end %>
                   
                   </a>
-                  <% inappropiate_post = @post.inappropiate_posts.where("post_id = ?", @post.id) %>
+                  <% inappropiate_post = post.inappropiate_posts.where("post_id = ?", post.id) %>
                   <a>
                   <% if inappropiate_post.empty? %>
-                    <%= button_to inappropiate_posts_path(inappropiate_post: {post_id: @post.id}), method: :post, class:"btn btn-light btn-sm" do %>
-                      <span class="glyphicon glyphicon-fire"> </span> <%= @post.inappropiate_posts.count %>
+                    <%= button_to inappropiate_posts_path(inappropiate_post: {post_id: post.id}), method: :post, class:"btn btn-light btn-sm" do %>
+                      <span class="glyphicon glyphicon-fire"> </span> <%= post.inappropiate_posts.count %>
                     <% end %>
                   <% end %>
                   </a>
                   <% if current_user.role == "SuperAdmin" or current_user.role == "Admin" %>
-                    <% flag = @post.flags.where("post_id = ?", @post.id) %>
+                    <% flag = post.flags.where("post_id = ?", post.id) %>
                     <a>
                     <% if flag.empty? %>
-                      <%= button_to flags_path(flag: {post_id: @post.id}), method: :post, class:"btn btn-light btn-sm" do %>
-                        <span class="glyphicon glyphicon-flag"> </span> <%= @post.flags.count %>
+                      <%= button_to flags_path(flag: {post_id: post.id}), method: :post, class:"btn btn-light btn-sm" do %>
+                        <span class="glyphicon glyphicon-flag"> </span> <%= post.flags.count %>
                       <% end %>
                     <% end %>
                     </a>

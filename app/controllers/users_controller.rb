@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:image, :name, :email, :password, :provider, :uid)
 	end
 	def new
+
 	end
 
 	def create
