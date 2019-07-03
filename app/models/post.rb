@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
 	belongs_to :user
-	belongs_to :inappropiate_post
+	has_many :inappropiate_posts
 	has_one :blacklist
 	has_one :dumpster
 	has_many :comments
+	has_many :flags
 	has_many_attached :files
 	has_many :likes
 	validates :title, :description, :user_id, presence: true	

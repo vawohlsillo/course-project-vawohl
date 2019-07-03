@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(create_post_params)
     @post.user_id = current_user.id
-    @post.inappropiate_post = InappropiatePost.new
+    #@post.inappropiate_post = InappropiatePost.new
     respond_to do |format|
       if @post.save
         format.html { redirect_to "/", notice: 'Post was successfully created.' }

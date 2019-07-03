@@ -1,14 +1,16 @@
   <% if user_signed_in? %>
     <div class="container" style="top-margin: 5px;">
 	<div class="jumbotron">
-		<div class="row">
-			<div class="col-sm-auto">
+		<div class="row" >
+			<div class="col-sm-auto" style="max-width: auto;" >
 				<div class="float-left">
-					<h2> Check the ...</h2> 
+					<h2> Check the ...</h2>  
 				</div> </br>
 
 				<button type="button" class="btn btn-secondary btn-lg"> Hello </button> </br> </br>
-				<button type="button" class="btn btn-secondary btn-lg"> Hello </button> </br>
+				<% if current_user.role == "SuperAdmin" || current_user.role =="Admin" %>
+					<button type="button" class="btn btn-secondary btn-lg"> Dumpster </button> </br>
+				<% end %>
 
 				<h2> Advertising </h2> </br>
 					<a> <%= image_tag("coke.png", size:'160x200') %> </a> 
@@ -26,15 +28,13 @@
 					<a> <%= image_tag("niu.png", size:'160x200') %> </a> </br>
 
 			</div>
-			<div class="col-lg-auto">
+			<div class="col-lg-auto" style="max-width: 800px;">
 				<center> <h1> What's new on your life? </h1> </br> </center>
 				<%= render :partial => 'posts/form', :locals => { :post => @post_new , :user => current_user } %>
 				<div class="panel-group">
 						<%= render :partial => "posts/show" %>
 				</div>
-				<div class="col-sm-auto">
-					
-			    </div>
+				
 			</div>	
 		</div>
 	</div>

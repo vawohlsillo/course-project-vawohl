@@ -7,6 +7,7 @@ class User < ApplicationRecord
 	has_many :comments, through: :posts
 	has_one :blacklist
 	has_many :likes
+	has_many :flags
 	validates :name, presence: true
 	has_one_attached :image
 	after_create :image_is_attached
