@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 god = User.new( name: "God Admin", biography: "I assign the SuperAdmins here", sex: "None", role: "SuperAdmin", email: "super@admin.cl", password: "adminall")
-super_admin = User.new( name: "Vicente Wohl", biography: "SuperAdmin at Filch App in Santiago,Chile Geofence", sex: "Man", role: "SuperAdmin", email: "vawohl@miuandes.cl", password: "password123", image: File.new("app/assets/images/vicho.png","r"))
+super_admin = User.new( name: "Vicente Wohl", biography: "SuperAdmin at Filch App in Santiago,Chile Geofence", sex: "Man", role: "SuperAdmin", email: "vicewohl@gmail.com", password: "password123", image: File.new("app/assets/images/vicho.png","r"))
 admin = User.new( name: "Jebus", biography: "Admin at Filch App in Santiago,Chile geofence. Son of god. Mentioned in The Simpsons", sex: "Man" , role: "Admin", email: "jebus@fake.com", password: "password123")
 user1 = User.new( name: "Esteban Dido", biography: "Studying civil engineering in University of Los Andes in Santiago", sex: "Man", email: "edido@miuandes.cl", password: "password123")
 @users = [god, super_admin, admin, user1]
