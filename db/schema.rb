@@ -45,13 +45,11 @@ ActiveRecord::Schema.define(version: 2019_07_03_070050) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
-    t.integer "inappropiate_comment_id"
     t.text "description"
     t.integer "inappropiate_counter"
     t.boolean "hide"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["inappropiate_comment_id"], name: "index_comments_on_inappropiate_comment_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -74,8 +72,10 @@ ActiveRecord::Schema.define(version: 2019_07_03_070050) do
 
   create_table "inappropiate_comments", force: :cascade do |t|
     t.string "justification"
+    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_inappropiate_comments_on_comment_id"
   end
 
   create_table "inappropiate_posts", force: :cascade do |t|
