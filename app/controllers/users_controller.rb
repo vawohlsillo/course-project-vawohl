@@ -49,9 +49,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-  	def edit_user
-		@user = User.find(params[:user_id])
-  	end
+  	
 
 	def enable_admin
 		@user = User.find(params[:user_id])
@@ -80,17 +78,22 @@ class UsersController < ApplicationController
 		@user.save
 		redirect_to users_show_url(user_id: @user.id)
 	end
+	
+	def edit_user
+		@user = User.find(params[:user_id])
+  	end	
+
 	def update
 		@user = User.find(params[:user_id])
 		respond_to do |format|
-      		if @user.update(update_user_params)
-			flash[:success] = "User was successfully edited"
-        		redirect_to users_show_url(user_id: @user.id)
-      		else
-        		flash[:dange] = "Error. Try it later"
-        		redirect_to users_show_url(user_id: @user.id)
-      		end
-    end
+	      		if @user.update(update_user_params)
+				flash[:success] = "User was successfully edited"
+				redirect_to users_show_url(user_id: @user.id)
+	      		else
+				flash[:danger] = "Error. Try it later"
+				redirect_to users_show_url(user_id: @user.id)
+	      		end
+    		end
 	end
 	
 	def update_user_params

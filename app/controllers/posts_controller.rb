@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
+  def edit_post
+	@post = Post.find(params[:post_id])
   end
 
   # POST /posts
@@ -46,14 +47,23 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
+
+  def edit_post_params
+	params.require(:post).permit(:title, :description)
+  end
+  def edit
+	@post = Post.find(params[:post_id])
+  end
+
   def update
+    @post = Post.find(params[:post_id])
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+      if @post.update(edit_post_params)
+        flash[:success] = "Post was successfully edited"
+	redirect_to "/"
       else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        flash[:danger] = "Error. Try it later"
+        redirect_to "/"
       end
     end
   end

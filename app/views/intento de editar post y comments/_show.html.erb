@@ -67,6 +67,16 @@
                     <% end %>
                     </a>
                   <% end %>
+                  <!--
+                  <% if current_user.id == post.user_id or current_user.role == "SuperAdmin" or current_user.role == "Admin" %>
+                    <a>
+                      <button type="button" class="btn btn-light btn-sm">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <%= link_to "Edit Post",  edit_post_path(post_id: post.id) %>
+                      </button>  
+                    </a>
+                  <% end %>
+                -->
                 </div>
             </div>
 		</div>

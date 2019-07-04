@@ -1,6 +1,6 @@
 class FlagsController < ApplicationController
   def create
-		@flag = current_user.flags.build(like_params)
+		@flag = current_user.flags.build(flag_params)
 		if @flag.save
 			flash[:success] = 'Post flagged' 
 			@post = @flag.post.id		
@@ -11,7 +11,13 @@ class FlagsController < ApplicationController
 		end
   end
 
+  def destroy
+	@flag = Flag.find(params[:id])
+    	@flag.destroy
+    	flash[:danger] = "Unflag the post"
+    	redirect_back(fallback_location: root_path)
+  end
   def flag_params
-		params.permit(:flag).require(:post_id)
+		params.require(:flag).permit(:post_id)
   end
 end

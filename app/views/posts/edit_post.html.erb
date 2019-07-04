@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="jumbotron">
+		<center>
+			<h2> Edit Post </h2>
+			<%= form_for(@post) do |form| %>
+				<% if @post.errors.any? %>
+    				<div id="error_explanation">
+	      				<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+	      				<ul>
+	      				<% @post.errors.full_messages.each do |message| %>
+	        				<li><%= message %></li>
+	      				<% end %>
+	      				</ul>
+    				</div>
+  				<% end %>
+				<div class="field">
+					<%= form.label :title %><br />
+					<%= form.text_field :title, autofocus: true, autocomplete: 'title' %>
+				</div>
+
+				<div class="field">
+					<%= form.label :description %><br />
+					<%= form.text_area :description, rows: 6, cols: 60 %>
+				</div>
+
+				<div class="actions">
+					<%= form.submit "Update Post" %>
+				</div>
+			<% end %>
+		</center>
+	</div>
+</div>
