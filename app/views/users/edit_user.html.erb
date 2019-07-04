@@ -1,2 +1,33 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+	<div class="jumbotron">
+		<center>
+			<h2> Edit User </h2>
+			<%= form_for(@user) do |form| %>
+				<% if @user.errors.any? %>
+    				<div id="error_explanation">
+	      				<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+	      				<ul>
+	      				<% @user.errors.full_messages.each do |message| %>
+	        				<li><%= message %></li>
+	      				<% end %>
+	      				</ul>
+    				</div>
+  				<% end %>
+				<div class="field">
+					<%= form.label :name %><br />
+					<%= form.text_field :name, autofocus: true, autocomplete: 'name' %>
+				</div>
+
+				<div class="field">
+					<%= form.label :biography %><br />
+					<%= form.text_area :biography, rows: 6, cols: 60 %>
+				</div>
+
+				<div class="actions">
+					<%= form.submit "Update User" %>
+				</div>
+			<% end %>
+		</center>
+	</div>
+</div>

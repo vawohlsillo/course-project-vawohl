@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #resources :probandos
+  resources :probandos
   root to: 'home#index'
   resources :flags, only: [:create]
   get 'flags/create'
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/index', as: "profile"
   get 'users/show'
   get 'users/edit_user', as: "edit_user"
+  resources :users, only: [:update]
   get 'posts/index', as: 'posts_index'
   post 'users/update'
   get 'users/enable_admin', to: 'users#enable_admin', as: 'enable_admin'
