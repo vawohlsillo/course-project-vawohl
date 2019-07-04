@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :sex
       t.boolean :suspended
       t.string :role
+      t.string :city
+      t.string :country
       t.timestamps
     end
   end

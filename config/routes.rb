@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'users/index', as: "profile"
   get 'users/show'
   get 'users/edit_user', as: "edit_user"
-  resources :users, only: [:update, :destroy]
+  resources :users, only: [:update]
   get 'posts/index', as: 'posts_index'
   get 'posts/edit_post', as: 'edit_post'
   

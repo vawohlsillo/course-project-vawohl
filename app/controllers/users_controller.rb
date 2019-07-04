@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	
 	def user_params
 		
-		params.require(:user).permit(:image, :name, :email, :password, :sex)
+		params.require(:user).permit(:image, :name, :city, :country, :email, :password, :sex)
 	end
 
 	def google_user_params

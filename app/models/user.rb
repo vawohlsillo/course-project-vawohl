@@ -11,6 +11,8 @@ class User < ApplicationRecord
 	has_many :likes, dependent: :delete_all
 	has_many :flags, dependent: :delete_all
 	validates :name, presence: true
+	validates :city, presence: true
+	validates :country, presence: true
 	has_one_attached :image
 	after_create :image_is_attached
 	def image_is_attached

@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2019_07_04_032146) do
     t.string "sex"
     t.boolean "suspended"
     t.string "role"
+    t.string "city"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
