@@ -1,0 +1,2 @@
+module InappropiateCommentsHelper
+end

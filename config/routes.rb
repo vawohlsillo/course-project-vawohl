@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #get 'inappropiate_comments/new'
+  #get 'inappropiate_comments/create'
+  #get 'inappropiate_comments/destroy'
+  #get 'inappropiate_comments/update'
   resources :probandos
   root to: 'home#index'
   resources :flags, only: [:create]
@@ -20,6 +24,7 @@ Rails.application.routes.draw do
   resources :users, only: [:enable_admin, :unable_admin, :enable_superadmin, :unable_superadmin]
   resources :comments
   resources :likes, only: [:create, :destroy]
+  resources :inappropiate_comments, only: [:create, :destroy]
   resources :inappropiate_posts, only: [:create, :destroy]
   resources :flags, only: [:create, :destroy]
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }

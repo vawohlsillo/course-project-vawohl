@@ -15,7 +15,20 @@
 					<a> <%= comment.description %> </a>
 				</div>
 				<div class="panel-footer">
-
+					<div class="row">
+						<% inappropiate_comment = comment.inappropiate_comments.where("user_id = ?", current_user.id) %>
+                  		<center> <a>
+                  		<% if inappropiate_comment.empty? %>
+                    		<%= button_to inappropiate_comments_path(inappropiate_comment: {comment_id: comment.id}), method: :post, class:"btn btn-light btn-sm" do %>
+                      			<span class="glyphicon glyphicon-fire"> <%= comment.inappropiate_comments.count %> </span> 
+                    		<% end %>
+                  		<% else %>
+                    		<%= button_to inappropiate_comment.first, method: :delete, class:"btn btn-light btn-sm" do %>
+                      			<span class="glyphicon glyphicon-erase"> <%= comment.inappropiate_comments.count %> </span>
+                    		<% end %>
+                  		<% end %>
+                  		</a> </center>
+					</div>
 				</div>
 			<% end %>
 		</div>
