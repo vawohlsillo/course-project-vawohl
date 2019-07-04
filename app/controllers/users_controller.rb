@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:user_id])
-		@post = Post.new
-		@comment = Comment.new
+		@post_new = Post.new
+		@comment_new = Comment.new
 		@posts = @user.posts.order("created_at DESC")	
   	end
 	
@@ -53,6 +53,33 @@ class UsersController < ApplicationController
 		
   	end
 
+	def enable_admin
+		@user = User.find(params[:user_id])
+		@user.role = "Admin"
+		@user.save
+		redirect_to users_show_url(user_id: @user.id)
+	end
+	
+	def unable_admin
+		@user = User.find(params[:user_id])
+		@user.role = nil
+		@user.save
+		redirect_to users_show_url(user_id: @user.id)
+	end
+
+	def enable_superadmin
+		@user = User.find(params[:user_id])
+		@user.role = "SuperAdmin"
+		@user.save
+		redirect_to users_show_url(user_id: @user.id)
+	end
+	
+	def unable_superadmin
+		@user = User.find(params[:user_id])
+		@user.role = "Admin"
+		@user.save
+		redirect_to users_show_url(user_id: @user.id)
+	end
 	def update
 
 	end

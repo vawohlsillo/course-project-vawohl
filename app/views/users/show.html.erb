@@ -44,28 +44,28 @@
 			<div class="float-right">
 				<% if current_user.role == "SuperAdmin" && current_user.email == "super@admin.cl" %>
 					<% if @user.role != "SuperAdmin" %>
-						<button type="button" class="btn btn-success btn-md" style="font-weight: bold; margin-right: 5px;" >
-						Enable SuperAdmin <% @user.role == "SuperAdmin" %>  
+						<button type="button" class="btn btn-success btn-md" style="font-weight: bold; margin-right: 5px; color: white;" >
+						<%= link_to 'Enable SuperAdmin', { controller: :users, action: :enable_admin } %>   
 						</button>
 					<% else %>
-						<button type="button" class="btn btn-danger btn-md" style="font-weight: bold; margin-right: 5px;" >
-						Unable SuperAdmin <% @user.role == "Admin" %>
+						<button type="button" class="btn btn-md" style="font-weight: bold; margin-right: 5px; color: white; background-color: red;" >
+						<%= link_to 'Unable SuperAdmin', unable_superadmin_path(user_id: @user.id) %>
 						</button>
 					<% end %>
 				<% end %>
 				<% if current_user.role == "SuperAdmin" %>
 					<% if @user.role != "Admin" %>
-						<button type="button" class="btn btn-success btn-md" style="font-weight: bold; margin-right: 5px;">
-						Enable Admin <% @user.role == "Admin" %>  
+						<button type="button" class="btn btn-success btn-md" style="font-weight: bold; margin-right: 5px; color: white;">
+						<%= link_to 'Enable Admin', enable_admin_path(user_id: @user.id) %>  
 						</button>
 					<% else %>
-						<button type="button" class="btn btn-danger btn-md" style="font-weight: bold; margin-right: 5px;">
-						Unable Admin <% @user.role == nil %>
+						<button type="button" class="btn btn-md" style="font-weight: bold; margin-right: 5px; color: white; background-color: red;">
+						<%= link_to 'Unable Admin', unable_admin_path(user_id: @user.id) %> 
 						</button>
 					<% end %>
 				<% end %>
 				<% if current_user.role == "SuperAdmin" || current_user.role == "Admin"%>
-					<button type="button" class="btn btn-secondary btn-md" style="font-weight: bold;">
+					<button type="button" class="btn btn-warning btn-md" style="font-weight: bold; color: white;">
 						<%= link_to "Edit User", edit_user_path %>
 					</button>
 				<% end %>
@@ -74,7 +74,7 @@
 	</div>
 	<center> <h1> Post something ... </h1> </br> </center>
 	<div class="row justify-content-md-center" style="margin-top: 5px;">
-		<%= render :partial => 'posts/form', :locals => { :post => @post_new } %>
+		<%= render 'posts/form', post: @post_new  %>
 		<%= render :partial => "posts/show" %>
 	</div>
 </div>
