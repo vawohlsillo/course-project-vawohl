@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 	has_many :posts, dependent: :delete_all
 	has_many :comments, through: :posts, dependent: :delete_all
+	has_many :inappropiate_posts, dependent: :delete_all
+	has_many :inappropiate_comments, dependent: :delete_all
 	has_one :blacklist
 	has_many :likes, dependent: :delete_all
 	has_many :flags, dependent: :delete_all

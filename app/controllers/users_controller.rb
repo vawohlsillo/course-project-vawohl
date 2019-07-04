@@ -49,8 +49,13 @@ class UsersController < ApplicationController
 		end
 	end
 
-  	def edit
+  	def edit_user
+		
   	end
+
+	def update
+
+	end
 	
 	#private	
 	

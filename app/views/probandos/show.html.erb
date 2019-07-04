@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @probando.user %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @probando.post %>
+</p>
+
+<p>
+  <strong>Parragraph:</strong>
+  <%= @probando.parragraph %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @probando.number %>
+</p>
+
+<%= link_to 'Edit', edit_probando_path(@probando) %> |
+<%= link_to 'Back', probandos_path %>

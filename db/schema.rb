@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_070050) do
+ActiveRecord::Schema.define(version: 2019_07_04_032146) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,32 +33,15 @@ ActiveRecord::Schema.define(version: 2019_07_03_070050) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "blacklists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_blacklists_on_post_id"
-    t.index ["user_id"], name: "index_blacklists_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
     t.text "description"
-    t.integer "inappropiate_counter"
     t.boolean "hide"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "dumpsters", force: :cascade do |t|
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_dumpsters_on_post_id"
   end
 
   create_table "flags", force: :cascade do |t|
@@ -73,17 +56,21 @@ ActiveRecord::Schema.define(version: 2019_07_03_070050) do
   create_table "inappropiate_comments", force: :cascade do |t|
     t.string "justification"
     t.integer "comment_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_inappropiate_comments_on_comment_id"
+    t.index ["user_id"], name: "index_inappropiate_comments_on_user_id"
   end
 
   create_table "inappropiate_posts", force: :cascade do |t|
     t.string "justification"
     t.integer "post_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_inappropiate_posts_on_post_id"
+    t.index ["user_id"], name: "index_inappropiate_posts_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -101,10 +88,20 @@ ActiveRecord::Schema.define(version: 2019_07_03_070050) do
     t.text "description"
     t.boolean "solve_status"
     t.boolean "hide"
-    t.integer "inappropiate_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "probandos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.string "parragraph"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_probandos_on_post_id"
+    t.index ["user_id"], name: "index_probandos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

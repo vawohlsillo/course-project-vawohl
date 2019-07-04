@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  #resources :probandos
   resources :flags, only: [:create]
   get 'flags/create'
   get 'policy/index'
   get 'users/index', as: "profile"
   get 'users/show'
+  get 'users/edit_user', as: "edit_user"
   get 'posts/index'
+  patch 'users/update'
   resources :posts
   resources :comments
   resources :likes, only: [:create, :destroy]

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  post: one
+  parragraph: MyString
+  number: 1
+
+two:
+  user: two
+  post: two
+  parragraph: MyString
+  number: 1

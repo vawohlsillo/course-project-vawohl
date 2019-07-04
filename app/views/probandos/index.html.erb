@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Probandos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Post</th>
+      <th>Parragraph</th>
+      <th>Number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @probandos.each do |probando| %>
+      <tr>
+        <td><%= probando.user %></td>
+        <td><%= probando.post %></td>
+        <td><%= probando.parragraph %></td>
+        <td><%= probando.number %></td>
+        <td><%= link_to 'Show', probando %></td>
+        <td><%= link_to 'Edit', edit_probando_path(probando) %></td>
+        <td><%= link_to 'Destroy', probando, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Probando', new_probando_path %>
